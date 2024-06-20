@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  aws-lambda-add-npm-packages #magic___^_^___line Sample SAM Template for aws-lambda-add-npm-packages #magic___^_^___line
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+    # You can add LoggingConfig parameters such as the Logformat, Log Group, and SystemLogLevel or ApplicationLogLevel. Learn more here https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-loggingconfig.
+    LoggingConfig:
+      LogFormat: JSON
+Resources:
+  QuotesScraperFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: quotes-scraper/
+      Handler: app.lambdaHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      Events:
+        QuotesScraper:
+          Type: Api
+          Properties:
+            Path: /quotes
+            Method: get
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  QuotesScraperApi:
+    Description: "API Gateway endpoint URL for Prod stage for Quotes Scraper function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/quotes/"
+  QuotesScraperFunction:
+    Description: "Quotes Scraper Function ARN"
+    Value: !GetAtt QuotesScraperFunction.Arn
+  QuotesScraperFunctionIamRole:
+    Description: "Implicit IAM Role created for Quotes Scraper function"
+    Value: !GetAtt QuotesScraperFunctionRole.Arn
