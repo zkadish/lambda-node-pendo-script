@@ -11,31 +11,31 @@ Globals:
     LoggingConfig:
       LogFormat: JSON
 Resources:
-  QuotesScraperFunction:
+  PendoScriptFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: quotes-scraper/
+      CodeUri: pendo-script/
       Handler: app.lambdaHandler
       Runtime: nodejs18.x
       Architectures:
       - x86_64
       Events:
-        QuotesScraper:
+        PendoScript:
           Type: Api
           Properties:
-            Path: /quotes
+            Path: /pendo
             Method: get
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  QuotesScraperApi:
-    Description: "API Gateway endpoint URL for Prod stage for Quotes Scraper function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/quotes/"
-  QuotesScraperFunction:
-    Description: "Quotes Scraper Function ARN"
-    Value: !GetAtt QuotesScraperFunction.Arn
-  QuotesScraperFunctionIamRole:
-    Description: "Implicit IAM Role created for Quotes Scraper function"
-    Value: !GetAtt QuotesScraperFunctionRole.Arn
+  PendoScriptApi:
+    Description: "API Gateway endpoint URL for Prod stage for Pendo Script function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/pendo/"
+  PendoScriptFunction:
+    Description: "Pendo Script Function ARN"
+    Value: !GetAtt PendoScriptFunction.Arn
+  PendoScriptFunctionIamRole:
+    Description: "Implicit IAM Role created for Pendo Script function"
+    Value: !GetAtt PendoScriptFunctionRole.Arn

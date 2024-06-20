@@ -1,7 +1,3 @@
-# fix docker so this project runs locally
-
-- https://stackoverflow.com/questions/50791354/running-aws-sam-projects-locally-get-error
-
 # lambda-nodejs-get-file-sri
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
