@@ -1,4 +1,5 @@
-// const axios = require("axios");
+// const fetch = require('node-fetch');
+const axios = require("axios");
 // const cheerio = require("cheerio");
 const crypto = require('crypto');
 
@@ -19,9 +20,12 @@ exports.lambdaHandler = async (_event, _context) => {
     ];
 
     async function getResourceContent(url) {
-      const response = await fetch(url);
-      const text = await response.text();
-      return text;
+      // const response = await fetch(url);
+      const response = await axios(url);
+      console.log(response);
+      // const text = await response.text();
+      // return text;
+      return response.data;
     }
 
     // const pendoJs = await getResourceContent(url);

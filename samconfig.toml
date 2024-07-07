@@ -4,7 +4,7 @@ version = 0.1
 
 [default]
 [default.global.parameters]
-stack_name = "lambda-nodejs-get-file-sri"
+stack_name = "lambda-node-pendo-script"
 
 [default.build.parameters]
 cached = true
@@ -17,6 +17,10 @@ lint = true
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
+s3_prefix = "lambda-node-pendo-script"
+region = "us-west-1"
+disable_rollback = true
+image_repositories = []
 
 [default.package.parameters]
 resolve_s3 = true

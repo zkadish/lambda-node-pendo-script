@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "crypto": "^1.0.1"
+    "axios": "^1.7.2",
+    "crypto": "^1.0.1",
+    "node-fetch": "^3.3.2"
   }
 }
